@@ -6,7 +6,7 @@ import {
   InputControls,
   RadioGroup,
   Select,
-} from "../../components/Controls";
+} from "../../components/Controllers";
 import { Form, UseForm } from "../../components/Form/UseForm";
 import getDepartmentCollection from "../../Services/EmployeeServices";
 
