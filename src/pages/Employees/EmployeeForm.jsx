@@ -1,10 +1,11 @@
 import { Grid } from "@material-ui/core";
 import {
+  Button,
   CheckBox,
   DatePicker,
   InputControls,
   RadioGroup,
-  Select
+  Select,
 } from "../../components/Controls";
 import { Form, UseForm } from "../../components/Form/UseForm";
 import getDepartmentCollection from "../../Services/EmployeeServices";
@@ -46,6 +47,18 @@ const EmployeeForm = () => {
             value={values.email}
             onChange={handleInputChange}
           />
+          <InputControls
+            name="mobile"
+            label="Mobile"
+            value={values.mobile}
+            onChange={handleInputChange}
+          />
+          <InputControls
+            name="city"
+            label="City"
+            value={values.city}
+            onChange={handleInputChange}
+          />
         </Grid>
         <Grid item sm={6}>
           <RadioGroup
@@ -77,6 +90,11 @@ const EmployeeForm = () => {
             value={values.isPermanent}
             onChange={handleInputChange}
           />
+
+          <div>
+            <Button type="submit" text="Submit" />
+            <Button text="Reset" color="default" />
+          </div>
         </Grid>
       </Grid>
     </Form>
