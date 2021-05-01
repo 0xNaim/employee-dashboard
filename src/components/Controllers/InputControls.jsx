@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 
-const InputControls = ({ name, label, value, onChange }) => {
+const InputControls = ({ name, label, value, onChange, error = null }) => {
   return (
     <TextField
       variant="outlined"
@@ -8,6 +8,7 @@ const InputControls = ({ name, label, value, onChange }) => {
       label={label}
       value={value}
       onChange={onChange}
+      {...(error && { error: true, helperText: error })}
     />
   );
 };

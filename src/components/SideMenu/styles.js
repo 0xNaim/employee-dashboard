@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     position: "absolute",
     left: 0,
     width: 320,
-    height: "100%",
+    height: "150%",
     background: "#253053",
   },
 }));
