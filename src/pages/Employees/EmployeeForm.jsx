@@ -8,7 +8,7 @@ import {
   Select,
 } from "../../components/Controllers";
 import { Form, UseForm } from "../../components/Form/UseForm";
-import getDepartmentCollection from "../../Services/EmployeeServices";
+import * as EmployeeServices from "../../Services/EmployeeServices";
 
 const genderItems = [
   { id: "male", title: "Male" },
@@ -63,7 +63,10 @@ const EmployeeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) alert("Okk");
+    if (validate()) {
+      EmployeeServices.insertEmployee(values);
+      resetForm();
+    }
   };
 
   return (
@@ -112,7 +115,7 @@ const EmployeeForm = () => {
             label="Department"
             value={values.departmentId}
             onChange={handleInputChange}
-            options={getDepartmentCollection()}
+            options={EmployeeServices.getDepartmentCollection()}
             error={errors.departmentId}
           />
 
