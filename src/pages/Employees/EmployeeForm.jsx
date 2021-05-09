@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import { useEffect } from "react";
 import {
   Button,
   CheckBox,
@@ -28,7 +29,7 @@ const initialFieldValue = {
   isPermanent: false,
 };
 
-const EmployeeForm = () => {
+const EmployeeForm = ({ addOrEdit, recordForEdit }) => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("fullName" in fieldValues)
@@ -64,10 +65,16 @@ const EmployeeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      EmployeeServices.insertEmployee(values);
-      resetForm();
+      addOrEdit(values, resetForm);
     }
   };
+
+  useEffect(() => {
+    if (recordForEdit != null)
+      setValues({
+        ...recordForEdit,
+      });
+  }, [recordForEdit]);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -112,7 +119,7 @@ const EmployeeForm = () => {
 
           <Select
             name="departmentId"
-            label="Department"
+            label="Select Department"
             value={values.departmentId}
             onChange={handleInputChange}
             options={EmployeeServices.getDepartmentCollection()}
@@ -134,7 +141,7 @@ const EmployeeForm = () => {
           />
 
           <div>
-            <Button type="submit" text="Submit" />
+            <Button type="submit" text="Submit" color="primary" variant="contained" />
             <Button text="Reset" color="default" onClick={resetForm} />
           </div>
         </Grid>

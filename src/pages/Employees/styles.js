@@ -11,4 +11,11 @@ export default makeStyles((theme) => ({
     margin: theme.spacing(5),
     padding: theme.spacing(3),
   },
+  searchInput: {
+    width: "70%",
+  },
+  addNewBtn: {
+    position: "absolute",
+    right: "10px"
+  }
 }));
