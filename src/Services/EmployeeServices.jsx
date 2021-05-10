@@ -18,8 +18,14 @@ export const insertEmployee = (data) => {
 
 export const updateEmployee = (data) => {
   let employees = getAllEmployees();
-  let recordIndex = employees.findIndex((x) => x.id === data.id);
+  let recordIndex = employees.findIndex((employee) => employee.id === data.id);
   employees[recordIndex] = { ...data };
+  localStorage.setItem(KEYS.employees, JSON.stringify(employees));
+};
+
+export const deleteEmployee = (id) => {
+  let employees = getAllEmployees();
+  employees = employees.filter((employee) => employee.id !== id);
   localStorage.setItem(KEYS.employees, JSON.stringify(employees));
 };
 
